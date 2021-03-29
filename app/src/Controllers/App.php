@@ -45,13 +45,13 @@ class App
 
     }
 
-    public function render($var = false){
+    public function render($var = []){
 
-
+        $templateEngine = new TemplateEngine();
         try{
-            $templateEngine = new TemplateEngine();
 
-            $template = $templateEngine->load(ucfirst($this->className) ."/". strtolower($this->methodName .".html"));
+
+            $template = $templateEngine->twig->load(ucfirst($this->className) ."/". strtolower($this->methodName .".html"));
             echo $template->render($var);
         }catch(\Twig\Error\LoaderError $ex){
             echo $ex->getMessage();

@@ -8,11 +8,11 @@ class TemplateEngine
 {
     private string $templatesPath = "src/Templates";
     private string $cachePath = "src/Resources/cache";
-
+    public $twig;
     public function __construct()
     {
         $loader = new \Twig\Loader\FilesystemLoader($this->templatesPath);
-        return  new \Twig\Environment($loader, [
+        $this->twig =  new \Twig\Environment($loader, [
             'cache' => $this->cachePath,
             'debug' => true
         ]);
